@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 import time
 import re
 
@@ -13,13 +12,9 @@ driver.get("http://orteil.dashnet.org/experiments/cookie/")
 # -------------------- STORE FUNCTION -------------------- #
 def what_to_buy():
     options = ['buyCursor', 'buyGrandma', 'buyFactory', 'buyMine', 'buyShipment', 'buyAlchemy lab', 'buyPortal', 'buyTime machine', 'buyElder Pledge']
-
     store_prices = []
     store = driver.find_elements(By.CSS_SELECTOR, 'div b')
-
     my_cookies = driver.find_element(By.ID, "money")
-    money = int(my_cookies.text)
-
     for i in store[10:18]:
         x = i.text.split()[-1]
         try:
@@ -28,6 +23,11 @@ def what_to_buy():
             y = int(re.sub(",", "", x))
             store_prices.append(y)
 
+        try:
+            money = int(my_cookies.text)
+        except:
+            a = my_cookies.text
+            money = int(re.sub(",", "", a))
     val = 0
     for i in store_prices:
         if money >= i:
