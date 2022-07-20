@@ -4,7 +4,7 @@ import time
 import re
 
 # -------------------- IMPORTANT -------------------- #
-gd_path = r"C:\Users\aqeel\OneDrive\Desktop\Code\chromedriver.exe"
+gd_path = "CHROMEDRIVER LOCATION"
 driver = webdriver.Chrome(executable_path=gd_path)
 driver.get("http://orteil.dashnet.org/experiments/cookie/")
 
